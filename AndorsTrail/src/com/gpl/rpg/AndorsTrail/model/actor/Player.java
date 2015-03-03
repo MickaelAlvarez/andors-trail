@@ -136,14 +136,15 @@ public final class Player extends Actor {
 
     public void removeQuestProgress(Quest quest, int removeProgress){
         Iterator iterator = questProgress.get(quest.questID).iterator();
+        Collection<Integer> collectionProgress = new ArrayList<Integer>();
         int progress;
         while(iterator.hasNext()){
             progress = (Integer)iterator.next();
             if(progress >= removeProgress){
-                Log.i("COUCOU3 ", "blabla");
-                questProgress.remove(progress);
+                collectionProgress.add(progress);
             }
         }
+        questProgress.get(quest.questID).removeAll(collectionProgress);
     }
 
 	public boolean hasExactQuestProgress(QuestProgress progress) { return hasExactQuestProgress(progress.questID, progress.progress); }
