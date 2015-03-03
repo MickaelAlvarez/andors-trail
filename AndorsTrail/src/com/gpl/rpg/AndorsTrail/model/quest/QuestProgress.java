@@ -1,5 +1,7 @@
 package com.gpl.rpg.AndorsTrail.model.quest;
 
+import android.util.Log;
+
 import com.gpl.rpg.AndorsTrail.AndorsTrailApplication;
 import com.gpl.rpg.AndorsTrail.resource.parsers.ResourceParserUtils;
 import com.gpl.rpg.AndorsTrail.util.L;

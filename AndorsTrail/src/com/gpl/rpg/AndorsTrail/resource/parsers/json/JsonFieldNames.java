@@ -97,6 +97,7 @@ public final class JsonFieldNames {
 		public static final String progress = "progress";
 		public static final String logText = "logText";
 		public static final String rewardExperience = "rewardExperience";
+        public static final String removeQuestProgress = "removeQuestProgress";
 		public static final String finishesQuest = "finishesQuest";
 	}
 

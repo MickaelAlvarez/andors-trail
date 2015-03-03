@@ -24,6 +24,7 @@ public final class QuestParser extends JsonCollectionParserFor<Quest> {
 					o.getInt(JsonFieldNames.QuestLogEntry.progress)
 					,translationLoader.translateQuestLogEntry(o.optString(JsonFieldNames.QuestLogEntry.logText, null))
 					,o.optInt(JsonFieldNames.QuestLogEntry.rewardExperience, 0)
+                    ,o.optInt(JsonFieldNames.QuestLogEntry.removeQuestProgress, 0)
 					,o.optInt(JsonFieldNames.QuestLogEntry.finishesQuest, 0) > 0
 			);
 		}

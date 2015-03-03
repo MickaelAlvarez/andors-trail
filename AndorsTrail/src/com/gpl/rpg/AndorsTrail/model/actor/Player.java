@@ -1,6 +1,7 @@
 package com.gpl.rpg.AndorsTrail.model.actor;
 
 import android.util.FloatMath;
+import android.util.Log;
 import android.util.SparseIntArray;
 import com.gpl.rpg.AndorsTrail.AndorsTrailApplication;
 import com.gpl.rpg.AndorsTrail.context.ControllerContext;
@@ -11,6 +12,7 @@ import com.gpl.rpg.AndorsTrail.model.ability.SkillCollection;
 import com.gpl.rpg.AndorsTrail.model.item.DropListCollection;
 import com.gpl.rpg.AndorsTrail.model.item.Inventory;
 import com.gpl.rpg.AndorsTrail.model.item.Loot;
+import com.gpl.rpg.AndorsTrail.model.quest.Quest;
 import com.gpl.rpg.AndorsTrail.model.quest.QuestProgress;
 import com.gpl.rpg.AndorsTrail.resource.tiles.TileManager;
 import com.gpl.rpg.AndorsTrail.savegames.LegacySavegameFormatReaderForPlayer;
@@ -23,6 +25,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map.Entry;
 
 public final class Player extends Actor {
@@ -130,6 +133,18 @@ public final class Player extends Actor {
 			this.spawnPlace = "rest";
 		}
 	}
+
+    public void removeQuestProgress(Quest quest, int removeProgress){
+        Iterator iterator = questProgress.get(quest.questID).iterator();
+        int progress;
+        while(iterator.hasNext()){
+            progress = (Integer)iterator.next();
+            if(progress >= removeProgress){
+                Log.i("COUCOU3 ", "blabla");
+                questProgress.remove(progress);
+            }
+        }
+    }
 
 	public boolean hasExactQuestProgress(QuestProgress progress) { return hasExactQuestProgress(progress.questID, progress.progress); }
 	public boolean hasExactQuestProgress(String questID, int progress) {

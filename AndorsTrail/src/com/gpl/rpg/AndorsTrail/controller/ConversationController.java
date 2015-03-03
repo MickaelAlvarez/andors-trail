@@ -1,6 +1,8 @@
 package com.gpl.rpg.AndorsTrail.controller;
 
 import android.content.res.Resources;
+import android.util.Log;
+
 import com.gpl.rpg.AndorsTrail.AndorsTrailApplication;
 import com.gpl.rpg.AndorsTrail.context.ControllerContext;
 import com.gpl.rpg.AndorsTrail.context.WorldContext;
@@ -18,6 +20,7 @@ import com.gpl.rpg.AndorsTrail.model.map.LayeredTileMap;
 import com.gpl.rpg.AndorsTrail.model.map.MapObject;
 import com.gpl.rpg.AndorsTrail.model.map.MonsterSpawnArea;
 import com.gpl.rpg.AndorsTrail.model.map.PredefinedMap;
+import com.gpl.rpg.AndorsTrail.model.quest.Quest;
 import com.gpl.rpg.AndorsTrail.model.quest.QuestLogEntry;
 import com.gpl.rpg.AndorsTrail.model.quest.QuestProgress;
 import com.gpl.rpg.AndorsTrail.model.script.Requirement;
@@ -160,8 +163,19 @@ public final class ConversationController {
 
 		QuestLogEntry stage = world.quests.getQuestLogEntry(progress);
 		if (stage == null) return;
-		result.loot.exp += stage.rewardExperience;
-		result.questProgress.add(progress);
+
+        Quest currentQuest = world.quests.getQuest(questID);
+
+        /*if(stage.removeQuestProgress != 0){
+            player.removeQuestProgress(currentQuest,stage.removeQuestProgress);
+            Log.i("COUCOU1", "REMOVEPROGRESS");
+        }*/
+       // else{
+            result.loot.exp += stage.rewardExperience;
+            result.questProgress.add(progress);
+            Log.i("COUCOU2", "ADDPROGRESS");
+        //}
+
 	}
 
 	private void addDropListReward(Player player, String droplistID, ScriptEffectResult result) {
