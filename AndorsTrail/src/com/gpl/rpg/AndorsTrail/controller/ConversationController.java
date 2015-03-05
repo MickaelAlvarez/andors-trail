@@ -166,15 +166,13 @@ public final class ConversationController {
 
         Quest currentQuest = world.quests.getQuest(questID);
 
-        /*if(stage.removeQuestProgress != 0){
+        if(stage.removeQuestProgress != 0){
             player.removeQuestProgress(currentQuest,stage.removeQuestProgress);
-            Log.i("COUCOU1", "REMOVEPROGRESS");
-        }*/
-       // else{
+        }
+       else{
             result.loot.exp += stage.rewardExperience;
             result.questProgress.add(progress);
-            Log.i("COUCOU2", "ADDPROGRESS");
-        //}
+        }
 
 	}
 
